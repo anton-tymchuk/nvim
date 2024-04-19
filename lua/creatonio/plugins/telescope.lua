@@ -1,5 +1,5 @@
 return {
- "nvim-telescope/telescope.nvim",
+  "nvim-telescope/telescope.nvim",
   branch = "0.1.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -7,7 +7,7 @@ return {
     "nvim-tree/nvim-web-devicons",
     "folke/todo-comments.nvim",
   },
-  config = function ()
+  config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
 
@@ -25,7 +25,7 @@ return {
     })
 
     telescope.load_extension("fzf")
-    
+
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
 
@@ -34,5 +34,6 @@ return {
     keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
     keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
     keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
-  end
+    keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Opened buffers" })
+  end,
 }

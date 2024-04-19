@@ -18,6 +18,9 @@ return {
 
     local keymap = vim.keymap -- for conciseness
 
+    -- Configure borderd for LspInfo ui
+    require("lspconfig.ui.windows").default_options.border = "rounded"
+
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
@@ -25,7 +28,7 @@ return {
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         local opts = { buffer = ev.buf, silent = true }
 
-        -- set keybinds 
+        -- set keybinds
         -- available only for buffer and only when LSP attached
         opts.desc = "Show LSP references"
         keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
@@ -65,10 +68,19 @@ return {
 
         opts.desc = "Restart LSP"
         keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+        -- Configure diagnostics border
+        vim.diagnostic.config({
+          float = {
+            border = "rounded",
+          },
+        })
       end,
     })
 
     -- used to enable autocompletion (assign to every lsp server config)
+    -- TODO: use this in capabilities
+    -- local capabilities = vim.lsp.protocol.make_client_capabilities()
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
     -- Change the Diagnostic symbols in the sign column (gutter)

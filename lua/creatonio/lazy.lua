@@ -9,9 +9,10 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
+
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({ { import = "creatonio.plugins" }, { import = "creatonio.plugins.lsp"} }, {
+require("lazy").setup({ { import = "creatonio.plugins" }, { import = "creatonio.plugins.lsp" } }, {
   checker = {
     enabled = true,
     notify = false,

@@ -43,17 +43,24 @@ return {
         ["<C-e>"] = cmp.mapping.abort(), -- close completion window
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
       }),
+
       -- sources for autocompletion
       -- the order is important it defines how this thing will be priorityzes
       sources = cmp.config.sources({
-        { name = "nvim_lsp"},
+        { name = "nvim_lsp" },
         { name = "luasnip" }, -- snippets
         { name = "buffer" }, -- text within current buffer
         { name = "path" }, -- file system paths
       }),
 
+      window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      },
       -- configure lspkind for vs-code like pictograms in completion menu
       formatting = {
+        fields = { cmp.ItemField.Kind, cmp.ItemField.Abbr, cmp.ItemField.Menu },
+        expandable_indicator = true,
         format = lspkind.cmp_format({
           maxwidth = 50,
           ellipsis_char = "...",

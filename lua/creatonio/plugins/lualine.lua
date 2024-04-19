@@ -5,6 +5,25 @@ return {
     local lualine = require("lualine")
     local lazy_status = require("lazy.status") -- to configure lazy pending updates count
 
+    -- TODO: Use this function to format branch
+    -- https://github.com/dmmulroy/kickstart.nix/blob/main/config/nvim/lua/plugins/lualine.lua
+    --
+    --[[ local function truncate_branch_name(branch)
+      if not branch or branch == "" then
+        return ""
+      end
+
+      -- Match the branch name to the specified format
+      local user, team, ticket_number = string.match(branch, "^(%w+)/(%w+)%-(%d+)")
+
+      -- If the branch name matches the format, display {user}/{team}-{ticket_number}, otherwise display the full branch name
+      if ticket_number then
+        return user .. "/" .. team .. "-" .. ticket_number
+      else
+        return branch
+      end
+    end ]]
+
     local colors = {
       blue = "#65D1FF",
       green = "#3EFFDC",
@@ -56,13 +75,13 @@ return {
       },
       sections = {
         lualine_x = {
+          -- { "branch", icon = "", fmt = truncate_branch_name },
           {
             lazy_status.updates,
             cond = lazy_status.has_updates,
             color = { fg = "#ff9e64" },
           },
-          { "encoding" },
-          { "fileformat" },
+          -- { "fileformat" },
           { "filetype" },
         },
       },

@@ -1,4 +1,4 @@
--- change tree list style 
+-- change tree list style
 vim.cmd("let g:netrw_liststyle = 3")
 
 local opt = vim.opt
@@ -39,3 +39,8 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
+
+-- Always keep 8 lines up and down when scroll
+opt.scrolloff = 8
+
+-- TODO: add yank hightlight
