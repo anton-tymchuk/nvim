@@ -5,7 +5,7 @@ local keymap = vim.keymap
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
 -- clear search highlights
-keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+keymap.set("n", "<Esc><Esc>", "<Esc>:nohl<CR>", { desc = "Clear search highlights" })
 
 -- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
@@ -40,10 +40,4 @@ keymap.set("n", "<leader>k", ":<c-u>m .-2<CR>==", { noremap = true, silent = tru
 keymap.set("n", "U", "<C-r>") -- Undo
 keymap.set("n", "D", "<cmd>t.<CR>") -- Duplicate line
 
--- TODO: bind it to search
--- Press 'S' for quick find/replace for the word under the cursor
-local function findAndReplace()
-  local cmd = ":%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>"
-  local keys = vim.api.nvim_replace_termcodes(cmd, true, false, true)
-  vim.api.nvim_feedkeys(keys, "n", false)
-end
+keymap.set("n", "<leader>R", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { desc = "search and replace word under cursor" })
