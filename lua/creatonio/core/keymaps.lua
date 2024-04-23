@@ -26,8 +26,17 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 
 keymap.set("n", "<leader>w", "<cmd>w<CR>") -- save
 keymap.set("n", "<leader>q", "<cmd>q<CR>") -- quite
+
 keymap.set("n", "H", "^") -- Begin of the line
 keymap.set("n", "L", "$") -- End of line
+
+keymap.set("x", "H", "^") -- Select tillbegin of the line
+keymap.set("x", "L", "$") -- Select till end of line
+
+-- Define mappings for leader+j and leader+k with immediate execution
+keymap.set("n", "<leader>j", ":<c-u>m .+1<CR>==", { noremap = true, silent = true })
+keymap.set("n", "<leader>k", ":<c-u>m .-2<CR>==", { noremap = true, silent = true })
+
 keymap.set("n", "U", "<C-r>") -- Undo
 keymap.set("n", "D", "<cmd>t.<CR>") -- Duplicate line
 
