@@ -38,7 +38,6 @@ return {
         "prismals",
         "pyright",
         "gopls",
-        "golangci_lint_ls",
       },
     })
 
@@ -49,6 +48,7 @@ return {
         "isort", -- python formatter
         "black", -- python formatter
         "eslint_d", -- js linter
+        "golangci-lint", -- golang linter
       },
     })
   end,
