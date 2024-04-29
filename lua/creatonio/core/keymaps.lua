@@ -48,3 +48,7 @@ keymap.set("n", "U", "<C-r>") -- Undo
 keymap.set("n", "D", "<cmd>t.<CR>") -- Duplicate line
 
 keymap.set("n", "<leader>R", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { desc = "search and [R]eplace word under cursor" })
+
+-- Gopher pluggins
+keymap.set("n", "<leader>gsj", "<cmd>GoTagAdd json<CR>", { desc = "[G]enerate [S]truct [J]son" })
+keymap.set("n", "<leader>gsy", "<cmd>GoTagAdd yaml<CR>", { desc = "[G]enerate [S]truct [Y]aml" })
